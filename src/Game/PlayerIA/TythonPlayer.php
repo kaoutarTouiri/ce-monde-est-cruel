@@ -50,7 +50,7 @@ class TythonPlayer extends Player
 
          $numRounds = $this->result->getNbRound();
 
-         if ($opponentLastchoice == 'paper' && $opponentLastScore == 0)//Je mets pas scissors
+         if ($opponentLastchoice == 'paper' && $opponentLastScore == 0)//Je mets pas scissors car il rejouera jamais la même
          {
             if($numRounds % 5 == 0)
               return 'rock';
@@ -72,21 +72,21 @@ class TythonPlayer extends Player
              else
                 return 'paper';
          }
-         if ($opponentLastchoice == 'paper' && $opponentLastScore == 1)//Il mettra pas pas rock, je mettrai pas paper
+         if ($opponentLastchoice == 'paper' && $opponentLastScore == 1)//Il mettra pas le choix perdu, je mettrai pas paper
          {
              if($numRounds % 5 == 0)
                 return 'scissors';
               else
                  return 'rock';
          }
-         if ($opponentLastchoice == 'rock' && $opponentLastScore == 1)//Il mettra pas scissors, je mettrai pas rock
+         if ($opponentLastchoice == 'rock' && $opponentLastScore == 1)//idem, je mettrai pas rock
           {
               if($numRounds % 5 == 0)
                  return 'scissors';
                else
                   return 'paper';
           }
-          if ($opponentLastchoice == 'scissors' && $opponentLastScore == 1)//feuille => scissors
+          if ($opponentLastchoice == 'scissors' && $opponentLastScore == 1)//idem, je mettrai pas scissors
             {
                 if($numRounds % 5 == 0)
                    return 'paper';
