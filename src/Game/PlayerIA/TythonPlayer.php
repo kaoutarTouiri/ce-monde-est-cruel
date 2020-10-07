@@ -41,8 +41,40 @@ class TythonPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
+        $opponentLastchoice = $this->result->getLastChoiceFor($this->opponentSide);
+          //$myLastChoice = $this->result->getLastChoiceFor($this->mySide);
 
-        return parent::rockChoice();
+         // $myLastScore= $this->result->getLastScoreFor($this->mySide);
+          $opponentLastScore= $this->result->getLastScoreFor($this->opponentSide);
+
+        if ($opponentLastchoice == 'paper' && $opponentLastScore == 0)
+                  {
+                      return 'rock';
+                  }
+                  if ($opponentLastchoice == 'rock' && $opponentLastScore == 0)
+                   {
+                       return 'scissors';
+                   }
+
+                   if ($opponentLastchoice == 'scissors' && $opponentLastScore == 0)
+                     {
+                         return 'paper';
+                     }
+                   if ($opponentLastchoice == 'paper' && $opponentLastScore == 1)
+                     {
+                         return 'scissors';
+                     }
+                     if ($opponentLastchoice == 'rock' && $opponentLastScore == 1)
+                      {
+                          return 'paper';
+                      }
+
+                      if ($opponentLastchoice == 'scissors' && $opponentLastScore == 1)
+                        {
+                            return 'rock';
+                        }
+
+                return 'rock';
 
     }
 };
