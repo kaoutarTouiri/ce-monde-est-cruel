@@ -81,25 +81,25 @@ class TythonPlayer extends Player
                  else
                     return 'paper';
              }
-           if ($opponentLastchoice == 'paper' && $opponentLastScore == 1)//Je mets pas rock
+           if ($opponentLastchoice == 'paper' && $opponentLastScore == 1)//Il mettra pas pas rock, je mettrai pas paper
              {
                  if($numRounds % 2 == 0)
                     return 'scissors';
                   else
-                     return 'paper';
+                     return 'rock';
              }
-             if ($opponentLastchoice == 'rock' && $opponentLastScore == 1)//Je mets pas scissors
+             if ($opponentLastchoice == 'rock' && $opponentLastScore == 1)//Il mettra pas scissors, je mettrai pas rock
               {
                   if($numRounds % 2 == 0)
-                     return 'rock';
+                     return 'scissors';
                    else
                       return 'paper';
               }
 
-              if ($opponentLastchoice == 'scissors' && $opponentLastScore == 1)//je mets pas paper
+              if ($opponentLastchoice == 'scissors' && $opponentLastScore == 1)//feuille => scissors
                 {
                     if($numRounds % 2 == 0)
-                       return 'scissors';
+                       return 'paper';
                      else
                         return 'rock';
                 }
