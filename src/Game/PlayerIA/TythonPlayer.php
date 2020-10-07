@@ -42,38 +42,67 @@ class TythonPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
 
         $opponentLastchoice = $this->result->getLastChoiceFor($this->opponentSide);
-          //$myLastChoice = $this->result->getLastChoiceFor($this->mySide);
+        //$myLastChoice = $this->result->getLastChoiceFor($this->mySide);
 
-         // $myLastScore= $this->result->getLastScoreFor($this->mySide);
+          //$myLastScore= $this->result->getLastScoreFor($this->mySide);
           $opponentLastScore= $this->result->getLastScoreFor($this->opponentSide);
 
-        if ($opponentLastchoice == 'paper' && $opponentLastScore == 0)
-                  {
-                      return 'rock';
-                  }
-                  if ($opponentLastchoice == 'rock' && $opponentLastScore == 0)
-                   {
+
+          $numRounds = $this->result->getNbRound();
+
+          /*if ($choiceA !== 'rock' && $choiceA !== 'paper' && $choiceA !== 'scissors')
+          $improbableMove = ' ';
+          if ($opponentLastScore == 0){
+             $improbableMove = $opponentLastchoice;
+          }
+          else{
+
+          }*/
+
+          if ($opponentLastchoice == 'paper' && $opponentLastScore == 0)//Je mets pas scissors
+          {
+            if($numRounds % 2 == 0)
+              return 'rock';
+            else
+               return 'paper';
+          }
+          if ($opponentLastchoice == 'rock' && $opponentLastScore == 0)//Je mets pas paper
+           {
+                if($numRounds % 2 == 0)
+                  return 'scissors';
+                else
+                   return 'rock';
+           }
+
+           if ($opponentLastchoice == 'scissors' && $opponentLastScore == 0)//Je mets pas rock
+             {
+                 if($numRounds % 2 == 0)
+                   return 'scissors';
+                 else
+                    return 'paper';
+             }
+           if ($opponentLastchoice == 'paper' && $opponentLastScore == 1)//Je mets pas rock
+             {
+                 if($numRounds % 2 == 0)
+                    return 'scissors';
+                  else
+                     return 'paper';
+             }
+             if ($opponentLastchoice == 'rock' && $opponentLastScore == 1)//Je mets pas scissors
+              {
+                  if($numRounds % 2 == 0)
+                     return 'rock';
+                   else
+                      return 'paper';
+              }
+
+              if ($opponentLastchoice == 'scissors' && $opponentLastScore == 1)//je mets pas paper
+                {
+                    if($numRounds % 2 == 0)
                        return 'scissors';
-                   }
-
-                   if ($opponentLastchoice == 'scissors' && $opponentLastScore == 0)
-                     {
-                         return 'paper';
-                     }
-                   if ($opponentLastchoice == 'paper' && $opponentLastScore == 1)
-                     {
-                         return 'scissors';
-                     }
-                     if ($opponentLastchoice == 'rock' && $opponentLastScore == 1)
-                      {
-                          return 'paper';
-                      }
-
-                      if ($opponentLastchoice == 'scissors' && $opponentLastScore == 1)
-                        {
-                            return 'rock';
-                        }
-
+                     else
+                        return 'rock';
+                }
                 return 'rock';
 
     }
